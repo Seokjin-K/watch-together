@@ -1,0 +1,85 @@
+spring:
+  application:
+    name: watch-together
+
+  # ?????? ??
+  datasource:
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:  # ??? ? ??
+      maximum-pool-size: 50  # ??? ??? ??
+      minimum-idle: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  # JPA ??
+  jpa:
+    hibernate:
+      ddl-auto: validate  # ??????? validate ??
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: false  # ??????? false
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        jdbc:
+          batch_size: 25  # ?? ??? ?? ??
+        order_inserts: true
+        order_updates: true
+
+  # Redis ??
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:
+      timeout: 60000ms
+      lettuce:  # Lettuce ????? ?? (?? ??)
+        pool:
+          max-active: 100  # ?? ??? ??
+          max-idle: 50
+          min-idle: 10
+
+  # OAuth2 ?? (Google)
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope:
+              - email
+              - profile
+
+# Netty ?? ??
+netty:
+  server:
+    port: 8888  # WebSocket? ?? ??
+    boss-thread-count: 2  # ?? ??? ???
+    worker-thread-count: 16  # I/O ??? ??? (CPU ?? * 2)
+
+# ???? ??
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+# ?????? ??
+app:
+  youtube:
+    api-key: ${YOUTUBE_API_KEY}
+  room:
+    code-length: 8  # ? ?? ??
+    max-participants-per-room: 1000
+    max-rooms: 100
+  websocket:
+    message-size-limit: 65536  # 64KB
+    send-buffer-size: 512KB
+    idle-timeout: 300000  # 5?

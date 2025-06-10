@@ -1,0 +1,63 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.0'
+	id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'com.watch-together'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'  // REST API 구축용
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'  // WebSocket 통신용
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'  // JPA 데이터 접근용
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'  // Redis 캐싱용
+	implementation 'org.springframework.boot:spring-boot-starter-security'  // 보안 설정용
+	implementation 'org.springframework.boot:spring-boot-starter-validation'  // 입력값 검증용
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'  // 모니터링용
+
+	// Netty - 고성능 비동기 네트워크 통신
+	implementation 'io.netty:netty-all:4.1.111.Final'
+
+	// Database
+	runtimeOnly 'com.mysql:mysql-connector-j'  // MySQL 드라이버
+
+	// Redis
+	implementation 'org.redisson:redisson-spring-boot-starter:3.31.0'  // Redis 고급 기능용
+
+	// Monitoring
+	implementation 'io.micrometer:micrometer-registry-prometheus'  // Prometheus 메트릭 수집
+
+	// Utils
+	compileOnly 'org.projectlombok:lombok'  // 보일러플레이트 코드 감소
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'  // DTO 매핑 자동화
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+	// OAuth2 for Google Login
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'  // Google OAuth용
+
+	// Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
