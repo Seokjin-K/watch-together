@@ -14,25 +14,4 @@ DevOps:
 - GitHub Actions - 클라우드 기반 CI/CD
 
 ## 프로젝트 구조
-youtube-watch-together/
-├── backend/
-│   ├── src/main/java/com/watchTogether/
-│   │   ├── config/          # 설정 클래스
-│   │   ├── controller/      # REST API
-│   │   ├── websocket/       # WebSocket 핸들러
-│   │   ├── netty/          # Netty 서버 구현
-│   │   ├── service/        # 비즈니스 로직
-│   │   ├── repository/     # 데이터 접근
-│   │   ├── entity/         # JPA 엔티티
-│   │   ├── dto/            # 데이터 전송 객체
-│   │   ├── exception/      # 예외 처리
-│   │   └── util/           # 유틸리티
-│   ├── src/main/resources/
-│   └── pom.xml or build.gradle
-├── docker/
-│   ├── Dockerfile
-│   └── docker-compose.yml
-├── monitoring/
-│   ├── prometheus/
-│   └── grafana/
-└── .github/workflows/
+![1](https://github.com/user-attachments/assets/f42f1866-255f-47e0-a100-faceb85afbf3)
