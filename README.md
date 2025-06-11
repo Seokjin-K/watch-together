@@ -14,31 +14,4 @@ DevOps:
 - GitHub Actions - 클라우드 기반 CI/CD
 
 ## 프로젝트 구조
-src/main/java/com/youtube/together/
-├── YoutubeTogether Application.java     # 메인 클래스\n
-├── config/                              # 설정 클래스
-\n
-│   ├── SecurityConfig.java
-│   ├── WebSocketConfig.java
-│   ├── RedisConfig.java
-│   └── WebConfig.java
-├── domain/                              # 도메인 모델
-│   ├── room/
-│   ├── user/
-│   ├── playlist/
-│   └── chat/
-├── application/                         # 비즈니스 로직
-│   ├── service/
-│   └── dto/
-├── infrastructure/                      # 인프라 계층
-│   ├── persistence/                     # DB 관련
-│   ├── youtube/                         # YouTube API
-│   ├── websocket/                       # WebSocket 서버
-│   └── redis/                          # Redis 관련
-├── presentation/                        # 표현 계층
-│   ├── api/                            # REST API
-│   └── websocket/                      # WebSocket 핸들러
-└── common/                             # 공통 모듈
-    ├── exception/
-    ├── error/
-    └── util/
+![캡처](https://github.com/user-attachments/assets/c413b21f-0c05-44f9-891e-32be9a00afe3)
