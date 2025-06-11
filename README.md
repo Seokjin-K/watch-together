@@ -15,8 +15,9 @@ DevOps:
 
 ## 프로젝트 구조
 src/main/java/com/youtube/together/
-├── YoutubeTogether Application.java     # 메인 클래스
+├── YoutubeTogether Application.java     # 메인 클래스\n
 ├── config/                              # 설정 클래스
+\n
 │   ├── SecurityConfig.java
 │   ├── WebSocketConfig.java
 │   ├── RedisConfig.java
